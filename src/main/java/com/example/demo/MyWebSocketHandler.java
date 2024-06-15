@@ -22,11 +22,9 @@ public class MyWebSocketHandler extends AbstractWebSocketHandler {
     	VariableStatic.session = session ;
     	this.session = session;
         System.out.println("Connected to WebSocket server " + this.session);
-        String url = "http://localhost:8081/send-message";
+        String url = "http://127.0.0.1:5002/send-message";
         RestTemplate restTemplate = new RestTemplate();
         String message = restTemplate.getForObject(url, String.class);
-        
-       
     }
 
     @Override

@@ -20,9 +20,19 @@ public class WebSocketController {
 
     @GetMapping("/send-message")
     public String sendMessageToWebSocket() {
-        // Send message to WebSocket server
-        webSocketHandler.sendMessage("TERKIRIM");
-        sshLogMonitorService.startMonitoring();
-        return "Message sent to WebSocket server";
+        try {
+            // Send message to WebSocket server
+            String message = """
+                    {"user" : "live_agratek"}
+                     """;
+            webSocketHandler.sendMessage(message);
+            System.out.println("--------------->>>>>>>>>>>>>>>>>>> websocket connect");
+            sshLogMonitorService.startMonitoring();
+            System.out.println("Start Monitoring log Sucess");
+            return "Message sent to WebSocket server";
+        }
+        catch (Exception e) {
+            return "Server Contoller is useless";
+        }
     }
 }

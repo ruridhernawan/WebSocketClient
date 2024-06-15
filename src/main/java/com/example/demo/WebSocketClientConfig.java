@@ -22,7 +22,7 @@ public class WebSocketClientConfig {
 
     @Bean
     public WebSocketConnectionManager connectionManager(WebSocketClient webSocketClient, AbstractWebSocketHandler handler) {
-        WebSocketConnectionManager connectionManager = new WebSocketConnectionManager(webSocketClient, handler, "ws://localhost:8082/websocket");
+        WebSocketConnectionManager connectionManager = new WebSocketConnectionManager(webSocketClient, handler, "ws://127.0.0.1:5001/websocket");
         connectionManager.setAutoStartup(true);
         return connectionManager;
     }
