@@ -104,6 +104,22 @@ public class SSHLogMonitorService {
 					webSocketHandler.sendMessage(messagex);
 				}
 				
+				if (line.contains("ERROR_SETTING_HARGA")) {
+					System.out.println(line);
+					processLogEntry(line);
+					String keyword = "ERROR_SETTING_HARGA";
+					int startIndex = line.indexOf(keyword);
+					
+			            // Ambil substring dari posisi awal hingga akhir string
+			            String result = line.substring(startIndex);
+			           
+			       
+					messagex = String.format("""
+							{"error" : "%s" }
+							
+							""",result);
+					webSocketHandler.sendMessage(messagex);
+				}
 					
 			}
 		} catch (IOException e) {
