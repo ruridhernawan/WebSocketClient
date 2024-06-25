@@ -120,6 +120,17 @@ public class SSHLogMonitorService {
 							""",result);
 					webSocketHandler.sendMessage(messagex);
 				}
+				
+				if (line.contains("504 Gateway Time-out")) {
+					System.out.println(line);
+					processLogEntry(line);
+					      
+					messagex = String.format("""
+							{"error" : "504 Gateway Time-out" }
+							
+							""");
+					webSocketHandler.sendMessage(messagex);
+				}
 					
 			}
 		} catch (IOException e) {
