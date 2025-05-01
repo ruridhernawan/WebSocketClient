@@ -13,7 +13,9 @@ public class RsaController {
 	public String handlePostRequest(@RequestBody MyModel request) {
 		// Proses data yang diterima, misalnya mengubah name menjadi uppercase
 		RSASHA256Signer rsasha256Signer = new RSASHA256Signer();
+		System.out.println("zzzzzzzz");
 		String signature = rsasha256Signer.signature(request.getKey(), request.getPayload());
+		System.out.println("ffffffffff");
 		return signature;
 	}
 
